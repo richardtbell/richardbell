@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Richard Bell</h1>
-        </header>
-        <p className="App-intro">
-          This is a place to talk about things I'm interested in.
-        </p>
-      </div>
-    );
-  }
+import Home from './pages/Home/Home'
+import PageNotFound from './pages/PageNotFound/PageNotFound'
+import Layout from './components/Layout/Layout'
+
+const App = props => {
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
 export default App;
